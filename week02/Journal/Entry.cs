@@ -1,14 +1,16 @@
 public class Entry
 {
     public string _date;
-    public string _promptTex;
+    public string _promptText;
     public string _entryText;
 
     public void Display()
     {
+        Console.WriteLine("--------------------------------------------------------");
         Console.WriteLine($"Date: {_date}");
-        Console.WriteLine($"Prompt: {_promptTex}");
+        Console.WriteLine($"Prompt: {_promptText}");
         Console.WriteLine($"Answer: {_entryText}");
+        Console.WriteLine("--------------------------------------------------------");
         Console.WriteLine();
     }
 

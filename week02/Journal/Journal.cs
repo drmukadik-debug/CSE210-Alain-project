@@ -1,8 +1,10 @@
+// In this class I add the possibility for the user to save data as JSON
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 
-public class journal
+public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
 
@@ -21,32 +23,35 @@ public class journal
 
     public void SaveToFile(string fileName)
     {
-        using (StreamWriter outputFile = new StreamWriter(fileName))
+        JsonSerializerOptions options = new JsonSerializerOptions
         {
-            foreach(Entry entry in _entries)
-            {
-                outputFile.WriteLine($"{entry._date}|{entry._promptText}|{entry._entryText}");
-            }
-        }
+            WriteIndented = true,
+            IncludeFields = true
+        };
+
+        string json = JsonSerializer.Serialize(_entries, options);
+
+        File.WriteAllText(fileName, json);
     }
 
     public void LoadFromFile(string fileName)
-
     {
-        _entries.Clear();
-
-        string[] lines = File.ReadAllLines(fileName);
-        foreach (string line in lines)
+        if (!File.Exists(fileName))
         {
-            string[] parts = line.Split('|');
+            Console.WriteLine("File not found.");
+            return;
+        }
+        JsonSerializerOptions options = new JsonSerializerOptions
+        {
+            IncludeFields = true
+        };
 
-            Entry entry = new Entry();
+        string json = File.ReadAllText(fileName);
 
-            entry._date = parts[0];
-            entry._promptTex = parts[1];
-            entry._entryText = parts[2];
-            _entries.Add(entry);
+         _entries = JsonSerializer.Deserialize<List<Entry>>(json, options)
+               ?? new List<Entry>();
         }
 
     }
-}
+
+
