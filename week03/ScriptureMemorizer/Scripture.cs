@@ -1,11 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+// Scripture class represent an entire scripture, 
+// including its reference and all of its words.
 public class Scripture
 {
+    // Store the scripture reference
     private Reference _reference;
+    
+    // Store every word as a Word object.
     private List<Word> _words;
+    // Random object used for selecting words.
     private Random _random = new Random();
 
     public Scripture(Reference reference, string text)
@@ -20,18 +25,11 @@ public class Scripture
 
     public void HideRandomWords(int numberToHide)
     {
-        var visibleWords = _words.Where(w => !w.IsHidden()).ToList();
-
-        if (visibleWords.Count == 0)
-            return;
-
-        for (int i = 0; i < numberToHide && visibleWords.Count > 0; i ++)
+        for (int i = 0; i < numberToHide; i++)
         {
-            int index = _random.Next(visibleWords.Count);
+            int index = _random.Next(_words.Count);
 
-            visibleWords[index].Hide();
-
-            visibleWords.RemoveAt(index);
+            _words[index].Hide();
         }
     }
 

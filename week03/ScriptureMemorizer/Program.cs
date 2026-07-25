@@ -1,12 +1,19 @@
 using System;
 using System.Collections.Generic;
 
+// Main program class
+// For more creativity: 
+// 1. I use a library of scriptures instead of one scripture.
+// 2. The program will randomly chooses one scripture each time.
+
 class Program
 {
     static void Main(string[] args)
     {
+        // Create a Random object to choose a scripture.
         Random random = new Random();
 
+         // Create a list to store multiple scriptures.
         List<Scripture> scriptures = new List<Scripture>()
         {
             new Scripture(
