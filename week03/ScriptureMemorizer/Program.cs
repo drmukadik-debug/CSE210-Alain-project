@@ -39,9 +39,9 @@ class Program
             Console.WriteLine();
             Console.Write("Press Enter to continue or type 'quit': ");
 
-            string input = Console.ReadLine();
+            string input = Console.ReadLine()?.Trim().ToLower();
 
-            if (input.ToLower() == "quit")
+            if (input == "quit")
             {
                 return;
             }
