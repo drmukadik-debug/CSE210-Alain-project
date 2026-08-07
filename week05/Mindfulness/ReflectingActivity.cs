@@ -80,13 +80,11 @@ public class ReflectingActivity : Activity
             Console.Write("> ");
             Console.WriteLine(GetRandomQuestion());
 
-            int remaining = (int)(endTime - DateTime.Now).TotalSeconds;
-            if (remaining <= 0)
+            if (DateTime.Now >= endTime)
             {
                 break;
             }
-
-            ShowSpinner(Math.Min(remaining, 5));
+            ShowSpinner(5);
              
         }
 
