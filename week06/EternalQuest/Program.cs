@@ -2,6 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
+// To show creativity, this program add a leveling system.
+// As the user earns more points, the user advances through different quest levels.
+// The levels are:
+//0-3000    = Beginning in the Quest.
+//3000-6000 = Dedicated Disciple.
+//6000-9000 = Eternal Champion.
+// 9000+    = Master of the Quest.
+
+
 class Program
 {
      // This List can contain SimpleGoal, EternalGoal,
@@ -248,8 +257,7 @@ class Program
         Console.WriteLine($"Your total score is: {points}");
         Console.WriteLine($"Your current level is: {GetLevel()}");
     }
-
-    // Determines the user's level based on their score.
+    //Determines the user's level based on their score.
     static string GetLevel()
     {
         if (points >= 9000)
