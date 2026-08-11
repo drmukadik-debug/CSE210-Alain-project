@@ -36,8 +36,11 @@ public abstract class Goal
     public abstract bool IsComplete();
 
     // This method records an event  and returns the points earned for that event.
-    //Each type og goals overrides this method.
+    //Each type of goals overrides this method.
     public abstract int RecordEvent();
+
+    // This method displays the goal and its current status.
+    public abstract string GetDisplayString();
 
     // This method converts the goal's data into a string format for saving to a file.
     public abstract string GetStringRepresentation();
