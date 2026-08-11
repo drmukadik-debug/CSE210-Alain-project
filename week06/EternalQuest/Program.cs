@@ -8,7 +8,7 @@ class Program
      // and ChecklistGoal objects because they all inherit from Goal.
      static List<Goal> goals = new List<Goal>();
 
-     static int score = 0;
+     static int points = 0;
      static string filename = "eternalquest.txt";
 
      static void Main(string[] args)
@@ -78,7 +78,7 @@ class Program
         Console.WriteLine("----------------------------");
 
 
-        Console.WriteLine($"Score: {score}");
+        Console.WriteLine($"your points are: {points}");
         Console.WriteLine($"Level: {GetLevel()}");
         Console.WriteLine();
 
@@ -86,7 +86,7 @@ class Program
         Console.WriteLine("1. Create New Goal");
         Console.WriteLine("2. List Goals");
         Console.WriteLine("3. Record Goal Event");
-        Console.WriteLine("4. Display Score");
+        Console.WriteLine("4. Display points");
         Console.WriteLine("5. Save Goals");
         Console.WriteLine("6. Quit");
         Console.WriteLine("7. Load Goals");
@@ -227,7 +227,7 @@ class Program
 
         int earnedPoints = goals[index].RecordEvent();
 
-        score += earnedPoints;
+        points += earnedPoints;
 
         Console.WriteLine();
         Console.WriteLine($"You earned {earnedPoints} points!");
@@ -245,22 +245,22 @@ class Program
     // Displays the current score.
     static void DisplayScore()
     {
-        Console.WriteLine($"Your total score is: {score}");
+        Console.WriteLine($"Your total score is: {points}");
         Console.WriteLine($"Your current level is: {GetLevel()}");
     }
 
     // Determines the user's level based on their score.
     static string GetLevel()
     {
-        if (score >= 9000)
+        if (points >= 9000)
         {
             return "Level 4 - Master of the Quest";
         }
-        else if (score >= 6000)
+        else if (points >= 6000)
         {
             return "Level 3 - Eternal Champion";
         }
-        else if (score >= 3000)
+        else if (points >= 3000)
         {
             return "Level 2 - Dedicated Disciple";
         }
@@ -276,7 +276,7 @@ class Program
     {
         using (StreamWriter outputFile = new StreamWriter(filename))
         {
-            outputFile.WriteLine(score);
+            outputFile.WriteLine(points);
 
             foreach (Goal goal in goals)
             {
@@ -306,7 +306,7 @@ class Program
             return;
         }
 
-        score = int.Parse(lines[0]);
+        points = int.Parse(lines[0]);
 
         for (int i = 1; i < lines.Length; i++)
         {

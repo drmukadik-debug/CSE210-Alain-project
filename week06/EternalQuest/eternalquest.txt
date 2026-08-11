@@ -1,0 +1,7 @@
+2000
+SimpleGoal|Temple|Assist every week in the temple ordinances|2000|True
+SimpleGoal|Learn English|I must wacth everyday one video that teach english|200|False
+SimpleGoal|Homework|finish ny assignment one time every week|500|False
+EternalGoal|scriptures|Read every day the Book of Mormon for 30 minutes.|200
+EternalGoal|Thites|pay every month my tithes|300
+ChecklistGoal|Ministering|I must ministere one person a week|600|3|0|500
